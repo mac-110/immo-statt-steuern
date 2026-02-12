@@ -52,12 +52,12 @@ export default function SystemSection() {
           className="text-center mb-16"
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-gold/20 bg-gold/5 mb-6">
-            <span className="text-gold/80 text-sm tracking-widest uppercase">Das Geheim-System</span>
+            <span className="text-gold text-sm tracking-widest uppercase">Das Geheim-System</span>
           </div>
-          <h2 className="font-display text-3xl md:text-5xl text-white mb-4">
+          <h2 className="font-display text-3xl md:text-5xl text-gray-800 mb-4">
             4 Prinzipien, die <span className="gold-text">alles verändern</span>
           </h2>
-          <p className="text-white/40 max-w-xl mx-auto">
+          <p className="text-gray-500 max-w-xl mx-auto">
             Kein Geheimnis — aber ein System, das die wenigsten konsequent umsetzen.
           </p>
         </motion.div>
@@ -69,19 +69,19 @@ export default function SystemSection() {
               initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.2 + i * 0.15 }}
-              className="glass-card p-8 group hover:border-gold/20 hover:-translate-y-1 hover:shadow-[0_20px_60px_-15px_rgba(212,168,83,0.1)] transition-all duration-500"
+              className="glass-card p-8 group hover:border-gold/20 hover:-translate-y-1 hover:shadow-[0_20px_60px_-15px_rgba(59,125,110,0.1)] transition-all duration-500"
             >
               <div className="flex items-start gap-5">
                 <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-gold/10 flex items-center justify-center group-hover:bg-gold/20 transition-colors">
                   <p.icon size={24} className="text-gold" />
                 </div>
                 <div>
-                  <div className="text-gold/60 text-sm font-semibold tracking-wider uppercase mb-1">
+                  <div className="text-gold/80 text-sm font-semibold tracking-wider uppercase mb-1">
                     Prinzip {i + 1}
                   </div>
-                  <h3 className="font-display text-xl text-white mb-1">{p.title}</h3>
+                  <h3 className="font-display text-xl text-gray-800 mb-1">{p.title}</h3>
                   <div className="text-gold font-semibold text-sm mb-3">{p.highlight}</div>
-                  <p className="text-white/40 leading-relaxed">{p.description}</p>
+                  <p className="text-gray-500 leading-relaxed">{p.description}</p>
                 </div>
               </div>
             </motion.div>

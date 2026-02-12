@@ -29,15 +29,15 @@ export default function Navigation() {
       transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-navy/80 backdrop-blur-xl border-b border-white/5"
+          ? "bg-white/80 backdrop-blur-xl border-b border-gray-200/50 shadow-sm"
           : "bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <a href="#" className="font-display text-xl tracking-wide">
           <span className="gold-text">IMMO</span>
-          <span className="text-white/60 mx-1">statt</span>
-          <span className="text-white/90">STEUERN</span>
+          <span className="text-gray-400 mx-1">statt</span>
+          <span className="text-gray-700">STEUERN</span>
         </a>
 
         <div className="hidden md:flex items-center gap-8">
@@ -45,7 +45,7 @@ export default function Navigation() {
             <a
               key={link.href}
               href={link.href}
-              className="text-sm text-white/50 hover:text-gold transition-colors duration-300 tracking-wide uppercase"
+              className="text-sm text-gray-500 hover:text-gold transition-colors duration-300 tracking-wide uppercase"
             >
               {link.label}
             </a>
@@ -60,7 +60,7 @@ export default function Navigation() {
 
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden text-white/70"
+          className="md:hidden text-gray-600"
         >
           {mobileOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -72,7 +72,7 @@ export default function Navigation() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-navy-100/95 backdrop-blur-xl border-b border-white/5"
+            className="md:hidden bg-white/95 backdrop-blur-xl border-b border-gray-200/50"
           >
             <div className="px-6 py-6 flex flex-col gap-4">
               {navLinks.map((link) => (
@@ -80,7 +80,7 @@ export default function Navigation() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className="text-white/60 hover:text-gold transition-colors py-2"
+                  className="text-gray-600 hover:text-gold transition-colors py-2"
                 >
                   {link.label}
                 </a>
@@ -88,7 +88,7 @@ export default function Navigation() {
               <a
                 href="#analyse"
                 onClick={() => setMobileOpen(false)}
-                className="mt-2 px-6 py-3 bg-gold text-navy font-semibold rounded-full text-center"
+                className="mt-2 px-6 py-3 bg-gold text-white font-semibold rounded-full text-center"
               >
                 Kostenlose Analyse
               </a>

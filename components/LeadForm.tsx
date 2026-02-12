@@ -98,14 +98,14 @@ export default function LeadForm() {
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-gold/20 bg-gold/5 mb-6">
             <Sparkles size={16} className="text-gold" />
-            <span className="text-gold/80 text-sm tracking-widest uppercase">
+            <span className="text-gold text-sm tracking-widest uppercase">
               Kostenlose Analyse
             </span>
           </div>
-          <h2 className="font-display text-4xl md:text-5xl text-white mb-4">
+          <h2 className="font-display text-4xl md:text-5xl text-gray-800 mb-4">
             Deine <span className="gold-text">Steuerersparnis</span> berechnen
           </h2>
-          <p className="text-white/50 text-lg">
+          <p className="text-gray-500 text-lg">
             In nur 2 Minuten zu deiner persönlichen Strategie
           </p>
         </motion.div>
@@ -126,7 +126,7 @@ export default function LeadForm() {
                   className={`w-10 h-10 rounded-full flex items-center justify-center border-2 transition-all duration-500 ${
                     step >= s
                       ? "border-gold bg-gold/20 text-gold"
-                      : "border-white/10 text-white/30"
+                      : "border-gray-200 text-gray-300"
                   }`}
                 >
                   {step > s ? <Check size={20} /> : s}
@@ -134,14 +134,14 @@ export default function LeadForm() {
                 {s < 3 && (
                   <div
                     className={`h-0.5 flex-1 mx-2 transition-all duration-500 ${
-                      step > s ? "bg-gold" : "bg-white/10"
+                      step > s ? "bg-gold" : "bg-gray-200"
                     }`}
                   />
                 )}
               </div>
             ))}
           </div>
-          <div className="flex justify-between text-xs text-white/40 px-2">
+          <div className="flex justify-between text-xs text-gray-400 px-2">
             <span>Situation</span>
             <span>Kontakt</span>
             <span>Fertig</span>
@@ -162,13 +162,13 @@ export default function LeadForm() {
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.3 }}
               >
-                <h3 className="text-2xl font-bold text-white mb-6">
+                <h3 className="text-2xl font-bold text-gray-800 mb-6">
                   Deine berufliche Situation
                 </h3>
 
                 {/* Employment Type */}
                 <div className="mb-8">
-                  <label className="block text-white/70 mb-4">
+                  <label className="block text-gray-600 mb-4">
                     Beschäftigungsverhältnis
                   </label>
                   <div className="grid grid-cols-2 gap-3">
@@ -181,7 +181,7 @@ export default function LeadForm() {
                         className={`p-4 rounded-xl border-2 transition-all duration-300 flex flex-col items-center gap-2 ${
                           formData.employmentType === option.value
                             ? "border-gold bg-gold/10 text-gold"
-                            : "border-white/10 text-white/50 hover:border-white/20"
+                            : "border-gray-200 text-gray-500 hover:border-gray-300"
                         }`}
                       >
                         <option.icon size={24} />
@@ -193,7 +193,7 @@ export default function LeadForm() {
 
                 {/* Income Range */}
                 <div className="mb-8">
-                  <label className="block text-white/70 mb-4 flex items-center gap-2">
+                  <label className="block text-gray-600 mb-4 flex items-center gap-2">
                     <Euro size={20} />
                     Jahresbruttoeinkommen
                   </label>
@@ -205,7 +205,7 @@ export default function LeadForm() {
                         className={`w-full p-4 rounded-xl border-2 transition-all duration-300 text-left ${
                           formData.income === range.value
                             ? "border-gold bg-gold/10 text-gold"
-                            : "border-white/10 text-white/50 hover:border-white/20"
+                            : "border-gray-200 text-gray-500 hover:border-gray-300"
                         }`}
                       >
                         {range.label}
@@ -219,8 +219,8 @@ export default function LeadForm() {
                   disabled={!canProceedStep1}
                   className={`w-full py-4 rounded-full font-bold text-lg flex items-center justify-center gap-2 transition-all duration-300 ${
                     canProceedStep1
-                      ? "bg-gold text-navy hover:shadow-[0_0_40px_rgba(212,168,83,0.4)]"
-                      : "bg-white/10 text-white/30 cursor-not-allowed"
+                      ? "bg-gold text-white hover:shadow-[0_0_40px_rgba(59,125,110,0.3)]"
+                      : "bg-gray-100 text-gray-300 cursor-not-allowed"
                   }`}
                 >
                   Weiter
@@ -237,7 +237,7 @@ export default function LeadForm() {
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.3 }}
               >
-                <h3 className="text-2xl font-bold text-white mb-6">
+                <h3 className="text-2xl font-bold text-gray-800 mb-6">
                   Deine Kontaktdaten
                 </h3>
 
@@ -245,13 +245,13 @@ export default function LeadForm() {
                   {/* Name Row */}
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-white/70 mb-2 text-sm">
+                      <label className="block text-gray-600 mb-2 text-sm">
                         Vorname *
                       </label>
                       <div className="relative">
                         <User
                           size={18}
-                          className="absolute left-4 top-1/2 -translate-y-1/2 text-white/30"
+                          className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-300"
                         />
                         <input
                           type="text"
@@ -259,19 +259,19 @@ export default function LeadForm() {
                           onChange={(e) =>
                             updateField("firstName", e.target.value)
                           }
-                          className="w-full pl-12 pr-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-white/30 focus:border-gold focus:outline-none transition-colors"
+                          className="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-gray-800 placeholder:text-gray-300 focus:border-gold focus:outline-none transition-colors"
                           placeholder="Max"
                         />
                       </div>
                     </div>
                     <div>
-                      <label className="block text-white/70 mb-2 text-sm">
+                      <label className="block text-gray-600 mb-2 text-sm">
                         Nachname *
                       </label>
                       <div className="relative">
                         <User
                           size={18}
-                          className="absolute left-4 top-1/2 -translate-y-1/2 text-white/30"
+                          className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-300"
                         />
                         <input
                           type="text"
@@ -279,7 +279,7 @@ export default function LeadForm() {
                           onChange={(e) =>
                             updateField("lastName", e.target.value)
                           }
-                          className="w-full pl-12 pr-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-white/30 focus:border-gold focus:outline-none transition-colors"
+                          className="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-gray-800 placeholder:text-gray-300 focus:border-gold focus:outline-none transition-colors"
                           placeholder="Mustermann"
                         />
                       </div>
@@ -288,19 +288,19 @@ export default function LeadForm() {
 
                   {/* Email */}
                   <div>
-                    <label className="block text-white/70 mb-2 text-sm">
+                    <label className="block text-gray-600 mb-2 text-sm">
                       E-Mail *
                     </label>
                     <div className="relative">
                       <Mail
                         size={18}
-                        className="absolute left-4 top-1/2 -translate-y-1/2 text-white/30"
+                        className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-300"
                       />
                       <input
                         type="email"
                         value={formData.email}
                         onChange={(e) => updateField("email", e.target.value)}
-                        className="w-full pl-12 pr-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-white/30 focus:border-gold focus:outline-none transition-colors"
+                        className="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-gray-800 placeholder:text-gray-300 focus:border-gold focus:outline-none transition-colors"
                         placeholder="max@beispiel.de"
                       />
                     </div>
@@ -308,19 +308,19 @@ export default function LeadForm() {
 
                   {/* Phone */}
                   <div>
-                    <label className="block text-white/70 mb-2 text-sm">
+                    <label className="block text-gray-600 mb-2 text-sm">
                       Telefon (optional)
                     </label>
                     <div className="relative">
                       <Phone
                         size={18}
-                        className="absolute left-4 top-1/2 -translate-y-1/2 text-white/30"
+                        className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-300"
                       />
                       <input
                         type="tel"
                         value={formData.phone}
                         onChange={(e) => updateField("phone", e.target.value)}
-                        className="w-full pl-12 pr-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-white/30 focus:border-gold focus:outline-none transition-colors"
+                        className="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-gray-800 placeholder:text-gray-300 focus:border-gold focus:outline-none transition-colors"
                         placeholder="+49 123 456789"
                       />
                     </div>
@@ -328,19 +328,19 @@ export default function LeadForm() {
 
                   {/* City */}
                   <div>
-                    <label className="block text-white/70 mb-2 text-sm">
+                    <label className="block text-gray-600 mb-2 text-sm">
                       Stadt/Region *
                     </label>
                     <div className="relative">
                       <MapPin
                         size={18}
-                        className="absolute left-4 top-1/2 -translate-y-1/2 text-white/30"
+                        className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-300"
                       />
                       <input
                         type="text"
                         value={formData.city}
                         onChange={(e) => updateField("city", e.target.value)}
-                        className="w-full pl-12 pr-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-white/30 focus:border-gold focus:outline-none transition-colors"
+                        className="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-gray-800 placeholder:text-gray-300 focus:border-gold focus:outline-none transition-colors"
                         placeholder="München"
                       />
                     </div>
@@ -350,7 +350,7 @@ export default function LeadForm() {
                 <div className="flex gap-4">
                   <button
                     onClick={() => setStep(1)}
-                    className="px-6 py-4 rounded-full border border-white/10 text-white/70 hover:border-gold/30 hover:text-gold transition-all duration-300 flex items-center gap-2"
+                    className="px-6 py-4 rounded-full border border-gray-200 text-gray-600 hover:border-gold/30 hover:text-gold transition-all duration-300 flex items-center gap-2"
                   >
                     <ArrowLeft size={20} />
                     Zurück
@@ -360,8 +360,8 @@ export default function LeadForm() {
                     disabled={!canProceedStep2 || isSubmitting}
                     className={`flex-1 py-4 rounded-full font-bold text-lg flex items-center justify-center gap-2 transition-all duration-300 ${
                       canProceedStep2 && !isSubmitting
-                        ? "bg-gold text-navy hover:shadow-[0_0_40px_rgba(212,168,83,0.4)]"
-                        : "bg-white/10 text-white/30 cursor-not-allowed"
+                        ? "bg-gold text-white hover:shadow-[0_0_40px_rgba(59,125,110,0.3)]"
+                        : "bg-gray-100 text-gray-300 cursor-not-allowed"
                     }`}
                   >
                     {isSubmitting ? "Wird gesendet..." : "Analyse anfordern"}
@@ -418,7 +418,7 @@ export default function LeadForm() {
                     className="absolute top-1/2 left-1/2 w-2 h-2 rounded-full"
                     style={{
                       backgroundColor:
-                        i % 2 === 0 ? "#d4a853" : "rgba(212, 168, 83, 0.3)",
+                        i % 2 === 0 ? "#3b7d6e" : "rgba(59, 125, 110, 0.3)",
                     }}
                   />
                 ))}
@@ -427,7 +427,7 @@ export default function LeadForm() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4 }}
-                  className="text-3xl font-bold text-white mb-4"
+                  className="text-3xl font-bold text-gray-800 mb-4"
                 >
                   Vielen Dank, {formData.firstName}!
                 </motion.h3>
@@ -436,7 +436,7 @@ export default function LeadForm() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5 }}
-                  className="text-white/70 text-lg mb-8"
+                  className="text-gray-600 text-lg mb-8"
                 >
                   Wir melden uns innerhalb von <span className="text-gold font-bold">24 Stunden</span> bei
                   dir mit deiner persönlichen Steuerersparnis-Analyse.
@@ -446,7 +446,7 @@ export default function LeadForm() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.6 }}
-                  className="flex items-center justify-center gap-2 text-white/50 text-sm"
+                  className="flex items-center justify-center gap-2 text-gray-400 text-sm"
                 >
                   <Shield size={16} />
                   <span>Deine Daten werden vertraulich behandelt</span>
@@ -462,7 +462,7 @@ export default function LeadForm() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
-            className="flex flex-wrap items-center justify-center gap-6 mt-8 text-white/40 text-sm"
+            className="flex flex-wrap items-center justify-center gap-6 mt-8 text-gray-400 text-sm"
           >
             <div className="flex items-center gap-2">
               <Shield size={16} />

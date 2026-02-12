@@ -62,7 +62,7 @@ export default function CalculatorSection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   // Simplified calculation
-  const annualGross = income * 12 / 0.58; // rough net-to-gross
+  const annualGross = income * 12 / 0.58;
   const taxRate = annualGross > 120000 ? 0.45 : annualGross > 60000 ? 0.42 : 0.35;
   const kaufpreis = 250000;
   const zinssatz = 0.045;
@@ -86,12 +86,12 @@ export default function CalculatorSection() {
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-gold/20 bg-gold/5 mb-6">
             <CalcIcon size={16} className="text-gold" />
-            <span className="text-gold/80 text-sm tracking-widest uppercase">Schnellrechner</span>
+            <span className="text-gold text-sm tracking-widest uppercase">Schnellrechner</span>
           </div>
-          <h2 className="font-display text-3xl md:text-5xl text-white mb-4">
+          <h2 className="font-display text-3xl md:text-5xl text-gray-800 mb-4">
             Berechne deine <span className="gold-text">Steuerersparnis</span>
           </h2>
-          <p className="text-white/40 max-w-xl mx-auto">
+          <p className="text-gray-500 max-w-xl mx-auto">
             Bewege den Slider und sieh sofort, wie viel du jährlich sparen kannst.
           </p>
         </motion.div>
@@ -104,7 +104,7 @@ export default function CalculatorSection() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="glass-card p-8"
           >
-            <label className="block text-white/60 mb-2 text-sm uppercase tracking-wider">
+            <label className="block text-gray-500 mb-2 text-sm uppercase tracking-wider">
               Monatliches Netto-Einkommen
             </label>
             <div className="text-4xl font-display gold-text mb-6">
@@ -119,39 +119,39 @@ export default function CalculatorSection() {
               onChange={(e) => setIncome(Number(e.target.value))}
               className="w-full mb-8"
             />
-            <div className="flex justify-between text-xs text-white/30 mb-10">
+            <div className="flex justify-between text-xs text-gray-400 mb-10">
               <span>€2.000</span>
               <span>€15.000</span>
             </div>
 
             <div className="glass-card-gold p-6">
-              <div className="text-sm text-gold/60 uppercase tracking-wider mb-2">
+              <div className="text-sm text-gold/80 uppercase tracking-wider mb-2">
                 Geschätzte jährliche Steuerersparnis
               </div>
               <div className="text-5xl font-display gold-text mb-2">
                 <AnimatedNumber value={savings} prefix="€" />
               </div>
-              <div className="text-white/40 text-sm">
+              <div className="text-gray-500 text-sm">
                 bei Steuersatz {Math.round(taxRate * 100)}% • Kaufpreis €250.000
               </div>
             </div>
 
             <div className="mt-6 grid grid-cols-2 gap-4 text-sm">
               <div className="glass-card p-4">
-                <div className="text-white/40">Kaufpreis</div>
-                <div className="text-white font-semibold">€250.000</div>
+                <div className="text-gray-400">Kaufpreis</div>
+                <div className="text-gray-700 font-semibold">€250.000</div>
               </div>
               <div className="glass-card p-4">
-                <div className="text-white/40">Eigenkapital</div>
+                <div className="text-gray-400">Eigenkapital</div>
                 <div className="text-gold font-semibold">€0</div>
               </div>
               <div className="glass-card p-4">
-                <div className="text-white/40">Zinsen</div>
-                <div className="text-white font-semibold">4,5%</div>
+                <div className="text-gray-400">Zinsen</div>
+                <div className="text-gray-700 font-semibold">4,5%</div>
               </div>
               <div className="glass-card p-4">
-                <div className="text-white/40">Monatsmiete</div>
-                <div className="text-white font-semibold">€1.125</div>
+                <div className="text-gray-400">Monatsmiete</div>
+                <div className="text-gray-700 font-semibold">€1.125</div>
               </div>
             </div>
           </motion.div>
@@ -163,19 +163,19 @@ export default function CalculatorSection() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="glass-card overflow-hidden"
           >
-            <div className="p-6 border-b border-white/5 flex items-center gap-3">
+            <div className="p-6 border-b border-gray-100 flex items-center gap-3">
               <TrendingUp size={20} className="text-gold" />
-              <h3 className="font-display text-lg text-white">5-Jahres-Projektion</h3>
+              <h3 className="font-display text-lg text-gray-800">5-Jahres-Projektion</h3>
             </div>
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="border-b border-white/5">
-                    <th className="px-6 py-4 text-left text-white/40 font-normal">Jahr</th>
-                    <th className="px-6 py-4 text-right text-white/40 font-normal">Zinsen</th>
-                    <th className="px-6 py-4 text-right text-white/40 font-normal">Reduktion zvE</th>
-                    <th className="px-6 py-4 text-right text-white/40 font-normal">Ersparnis</th>
-                    <th className="px-6 py-4 text-right text-white/40 font-normal">Gesamt</th>
+                  <tr className="border-b border-gray-100">
+                    <th className="px-6 py-4 text-left text-gray-400 font-normal">Jahr</th>
+                    <th className="px-6 py-4 text-right text-gray-400 font-normal">Zinsen</th>
+                    <th className="px-6 py-4 text-right text-gray-400 font-normal">Reduktion zvE</th>
+                    <th className="px-6 py-4 text-right text-gray-400 font-normal">Ersparnis</th>
+                    <th className="px-6 py-4 text-right text-gray-400 font-normal">Gesamt</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -191,13 +191,13 @@ export default function CalculatorSection() {
                         initial={{ opacity: 0, x: 20 }}
                         animate={isInView ? { opacity: 1, x: 0 } : {}}
                         transition={{ duration: 0.5, delay: 0.6 + i * 0.1 }}
-                        className="border-b border-white/5 hover:bg-white/[0.02] transition-colors"
+                        className="border-b border-gray-50 hover:bg-gold/5 transition-colors"
                       >
-                        <td className="px-6 py-4 text-white">{year}</td>
-                        <td className="px-6 py-4 text-right text-white/70">
+                        <td className="px-6 py-4 text-gray-700">{year}</td>
+                        <td className="px-6 py-4 text-right text-gray-600">
                           €{yearZinsen.toLocaleString("de-DE")}
                         </td>
-                        <td className="px-6 py-4 text-right text-white/70">
+                        <td className="px-6 py-4 text-right text-gray-600">
                           €{yearReduction.toLocaleString("de-DE")}
                         </td>
                         <td className="px-6 py-4 text-right text-gold font-semibold">
@@ -214,7 +214,7 @@ export default function CalculatorSection() {
             </div>
             <div className="p-6 bg-gold/5 border-t border-gold/10">
               <div className="flex justify-between items-center">
-                <span className="text-white/60">5-Jahres-Ersparnis</span>
+                <span className="text-gray-500">5-Jahres-Ersparnis</span>
                 <span className="text-2xl font-display gold-text">
                   €{Math.round(savings * 5 * 0.98).toLocaleString("de-DE")}
                 </span>

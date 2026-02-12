@@ -14,7 +14,7 @@ export const StepsSection = () => {
       description: 'Wir analysieren deine komplette finanzielle Situation und zeigen dir dein exaktes Einsparungspotenzial in Euro.',
       time: '30 Minuten',
       badge: '100% Kostenlos',
-      gradient: 'from-purple-500 to-pink-500',
+      gradient: 'from-teal-500 to-emerald-500',
     },
     {
       number: '2',
@@ -22,7 +22,7 @@ export const StepsSection = () => {
       description: 'Wir präsentieren dir bankfähige, bereits vermietete Immobilien im Full-Service-Konzept (einschliesslich Hausverwaltung und Mietgarantie) – perfekt auf deine Situation zugeschnitten.',
       time: 'Sofort vermietbar',
       badge: 'Zertifiziert',
-      gradient: 'from-blue-500 to-cyan-500',
+      gradient: 'from-blue-400 to-cyan-400',
     },
     {
       number: '3',
@@ -38,15 +38,15 @@ export const StepsSection = () => {
       description: 'Von Kaufvertrag bis Übergabe – du bist nie allein. Dein Vermögensaufbau läuft automatisch.',
       time: '24/7 Support',
       badge: 'Dein Berater',
-      gradient: 'from-orange-500 to-red-500',
+      gradient: 'from-amber-500 to-orange-500',
     },
   ];
 
   return (
-    <section ref={ref} className="relative py-32 bg-black text-white overflow-hidden">
+    <section ref={ref} className="relative py-32 bg-gray-50 text-gray-800 overflow-hidden">
       {/* Animated background */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:64px_64px]" />
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#d1d5db2e_1px,transparent_1px),linear-gradient(to_bottom,#d1d5db2e_1px,transparent_1px)] bg-[size:64px_64px]" />
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -57,18 +57,18 @@ export const StepsSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="inline-block px-4 py-2 bg-purple-500/10 border border-purple-500/30 rounded-full font-semibold text-sm text-purple-400 mb-6">
+          <span className="inline-block px-4 py-2 bg-gold/10 border border-gold/20 rounded-full font-semibold text-sm text-gold mb-6">
             Dein Weg zum Steuer-Erfolg
           </span>
-          <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
+          <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-gray-800">
             In nur{' '}
-            <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+            <span className="gold-text">
               4 einfachen Schritten
             </span>
           </h2>
-          <p className="text-xl text-gray-400">
+          <p className="text-xl text-gray-500">
             Von der ersten Analyse bis zur Steuerersparnis in unter{' '}
-            <span className="text-white font-semibold">90 Tagen</span>
+            <span className="text-gray-800 font-semibold">90 Tagen</span>
           </p>
         </motion.div>
 
@@ -84,11 +84,11 @@ export const StepsSection = () => {
             >
               <motion.div
                 whileHover={{ scale: 1.02, y: -5 }}
-                className="relative p-8 md:p-12 rounded-3xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all overflow-hidden group"
+                className="relative p-8 md:p-12 rounded-3xl bg-white backdrop-blur-sm border border-gray-200 hover:border-gray-300 transition-all overflow-hidden group shadow-sm"
               >
                 {/* Gradient background on hover */}
                 <motion.div
-                  className={`absolute inset-0 bg-gradient-to-br ${step.gradient} opacity-0 group-hover:opacity-10 transition-opacity`}
+                  className={`absolute inset-0 bg-gradient-to-br ${step.gradient} opacity-0 group-hover:opacity-5 transition-opacity`}
                   initial={false}
                 />
 
@@ -97,22 +97,22 @@ export const StepsSection = () => {
                   <motion.div
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.6 }}
-                    className={`flex-shrink-0 w-24 h-24 rounded-full bg-gradient-to-br ${step.gradient} flex items-center justify-center text-4xl font-bold shadow-2xl`}
+                    className={`flex-shrink-0 w-24 h-24 rounded-full bg-gradient-to-br ${step.gradient} flex items-center justify-center text-4xl font-bold text-white shadow-lg`}
                   >
                     {step.number}
                   </motion.div>
 
                   {/* Content */}
                   <div className="flex-1">
-                    <h3 className="text-3xl font-bold mb-3">{step.title}</h3>
-                    <p className="text-gray-400 text-lg mb-4 leading-relaxed">
+                    <h3 className="text-3xl font-bold mb-3 text-gray-800">{step.title}</h3>
+                    <p className="text-gray-500 text-lg mb-4 leading-relaxed">
                       {step.description}
                     </p>
                     <div className="flex flex-wrap gap-3">
-                      <span className="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-sm">
+                      <span className="px-4 py-2 bg-gray-50 border border-gray-200 rounded-full text-sm text-gray-600">
                         ⏱ {step.time}
                       </span>
-                      <span className={`px-4 py-2 bg-gradient-to-r ${step.gradient} rounded-full text-sm font-semibold`}>
+                      <span className={`px-4 py-2 bg-gradient-to-r ${step.gradient} rounded-full text-sm font-semibold text-white`}>
                         ✓ {step.badge}
                       </span>
                     </div>
@@ -143,11 +143,11 @@ export const StepsSection = () => {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full font-semibold text-lg hover:shadow-2xl hover:shadow-purple-500/50 transition-shadow"
+            className="px-8 py-4 bg-gold rounded-full font-semibold text-lg text-white hover:shadow-[0_0_40px_rgba(59,125,110,0.3)] transition-shadow"
           >
             Jetzt kostenlose Analyse starten
           </motion.button>
-          <p className="text-gray-500 mt-4">
+          <p className="text-gray-400 mt-4">
             ⚡ Erste Ergebnisse in 24 Stunden
           </p>
         </motion.div>

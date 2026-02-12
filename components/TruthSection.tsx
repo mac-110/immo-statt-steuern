@@ -42,8 +42,8 @@ export default function TruthSection() {
 
   return (
     <section id="wahrheit" ref={ref} className="relative py-32 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-navy via-red-950/5 to-navy" />
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-red-500/20 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-red-50/50 to-transparent" />
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-red-300/20 to-transparent" />
 
       <div className="relative max-w-6xl mx-auto px-6">
         <motion.div
@@ -52,12 +52,12 @@ export default function TruthSection() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-red-500/20 bg-red-500/5 mb-6">
-            <AlertTriangle size={16} className="text-red-400" />
-            <span className="text-red-400/80 text-sm tracking-widest uppercase">Die brutale Wahrheit</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-red-200 bg-red-50 mb-6">
+            <AlertTriangle size={16} className="text-red-500" />
+            <span className="text-red-500 text-sm tracking-widest uppercase">Die brutale Wahrheit</span>
           </div>
-          <h2 className="font-display text-3xl md:text-5xl text-white mb-4">
-            So viel verlierst du <span className="text-red-400">jeden Monat</span>
+          <h2 className="font-display text-3xl md:text-5xl text-gray-800 mb-4">
+            So viel verlierst du <span className="text-red-500">jeden Monat</span>
           </h2>
         </motion.div>
 
@@ -73,14 +73,14 @@ export default function TruthSection() {
               initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.2 + i * 0.15 }}
-              className="glass-card p-8 text-center group hover:border-red-500/20 transition-all duration-500"
+              className="glass-card p-8 text-center group hover:border-red-200 transition-all duration-500"
             >
-              <TrendingDown size={24} className="mx-auto mb-4 text-red-400/60" />
-              <div className="text-4xl md:text-5xl font-display text-red-400 mb-2">
+              <TrendingDown size={24} className="mx-auto mb-4 text-red-400" />
+              <div className="text-4xl md:text-5xl font-display text-red-500 mb-2">
                 <CountUp end={stat.value} prefix={stat.prefix} suffix={stat.suffix} />
               </div>
-              <div className="text-white/70 font-medium mb-1">{stat.label}</div>
-              <div className="text-white/30 text-sm">{stat.sub}</div>
+              <div className="text-gray-600 font-medium mb-1">{stat.label}</div>
+              <div className="text-gray-400 text-sm">{stat.sub}</div>
             </motion.div>
           ))}
         </div>
@@ -93,17 +93,17 @@ export default function TruthSection() {
           className="grid md:grid-cols-2 gap-6"
         >
           {/* Current */}
-          <div className="glass-card p-8 border-red-500/10 hover:border-red-500/20 transition-all duration-500">
-            <div className="text-red-400 text-sm uppercase tracking-widest mb-4 font-semibold">
+          <div className="glass-card p-8 border-red-100 hover:border-red-200 transition-all duration-500">
+            <div className="text-red-500 text-sm uppercase tracking-widest mb-4 font-semibold">
               Du heute
             </div>
-            <div className="text-6xl font-display text-red-400 mb-2">42–45%</div>
-            <div className="text-white/50 mb-6">Steuerlast auf dein Einkommen</div>
+            <div className="text-6xl font-display text-red-500 mb-2">42–45%</div>
+            <div className="text-gray-500 mb-6">Steuerlast auf dein Einkommen</div>
             <div className="space-y-3">
               {["Kein Vermögensaufbau", "Steuern steigen weiter", "Inflation frisst Erspartes"].map(
                 (item) => (
-                  <div key={item} className="flex items-center gap-3 text-white/40">
-                    <div className="w-1.5 h-1.5 bg-red-400/50 rounded-full" />
+                  <div key={item} className="flex items-center gap-3 text-gray-400">
+                    <div className="w-1.5 h-1.5 bg-red-300 rounded-full" />
                     {item}
                   </div>
                 )
@@ -119,11 +119,11 @@ export default function TruthSection() {
                 Mit System
               </div>
               <div className="text-6xl font-display gold-text mb-2">8–15%</div>
-              <div className="text-white/50 mb-6">Effektive Steuerlast + Vermögensaufbau</div>
+              <div className="text-gray-500 mb-6">Effektive Steuerlast + Vermögensaufbau</div>
               <div className="space-y-3 mb-8">
                 {["Aktiver Vermögensaufbau", "Steuerersparnis ab Tag 1", "Inflationsschutz durch Immobilien"].map(
                   (item) => (
-                    <div key={item} className="flex items-center gap-3 text-white/60">
+                    <div key={item} className="flex items-center gap-3 text-gray-600">
                       <div className="w-1.5 h-1.5 bg-gold rounded-full" />
                       {item}
                     </div>

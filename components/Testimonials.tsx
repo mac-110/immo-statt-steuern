@@ -63,9 +63,9 @@ export default function Testimonials() {
           className="text-center mb-16"
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-gold/20 bg-gold/5 mb-6">
-            <span className="text-gold/80 text-sm tracking-widest uppercase">Kundenstimmen</span>
+            <span className="text-gold text-sm tracking-widest uppercase">Kundenstimmen</span>
           </div>
-          <h2 className="font-display text-3xl md:text-5xl text-white">
+          <h2 className="font-display text-3xl md:text-5xl text-gray-800">
             Was unsere <span className="gold-text">Kunden sagen</span>
           </h2>
         </motion.div>
@@ -92,21 +92,21 @@ export default function Testimonials() {
                   <Star key={i} size={18} className="text-gold fill-gold" />
                 ))}
               </div>
-              <p className="text-xl md:text-2xl text-white/80 leading-relaxed mb-8 font-light">
+              <p className="text-xl md:text-2xl text-gray-600 leading-relaxed mb-8 font-light">
                 &ldquo;{testimonials[current].text}&rdquo;
               </p>
               <div className="flex items-center justify-between">
                 <div>
-                  <div className="text-white font-semibold text-lg">
+                  <div className="text-gray-800 font-semibold text-lg">
                     {testimonials[current].name}
                   </div>
-                  <div className="text-white/40">{testimonials[current].role}</div>
+                  <div className="text-gray-400">{testimonials[current].role}</div>
                 </div>
                 <div className="text-right">
                   <div className="text-3xl font-display gold-text">
                     {testimonials[current].savings}
                   </div>
-                  <div className="text-white/40 text-sm">Ersparnis/Jahr</div>
+                  <div className="text-gray-400 text-sm">Ersparnis/Jahr</div>
                 </div>
               </div>
             </motion.div>
@@ -116,7 +116,7 @@ export default function Testimonials() {
           <div className="flex items-center justify-center gap-4 mt-8">
             <button
               onClick={prev}
-              className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:border-gold/30 hover:text-gold transition-all text-white/50"
+              className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center hover:border-gold/30 hover:text-gold transition-all text-gray-400"
             >
               <ChevronLeft size={18} />
             </button>
@@ -126,14 +126,14 @@ export default function Testimonials() {
                   key={i}
                   onClick={() => setCurrent(i)}
                   className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    i === current ? "bg-gold w-6" : "bg-white/20 hover:bg-white/40"
+                    i === current ? "bg-gold w-6" : "bg-gray-300 hover:bg-gray-400"
                   }`}
                 />
               ))}
             </div>
             <button
               onClick={next}
-              className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:border-gold/30 hover:text-gold transition-all text-white/50"
+              className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center hover:border-gold/30 hover:text-gold transition-all text-gray-400"
             >
               <ChevronRight size={18} />
             </button>
@@ -152,11 +152,11 @@ export default function Testimonials() {
               className={`glass-card p-5 text-left transition-all duration-300 ${
                 i === current
                   ? "border-gold/30 bg-gold/5"
-                  : "hover:border-white/10"
+                  : "hover:border-gray-200"
               }`}
             >
-              <div className="text-white font-semibold text-sm">{t.name}</div>
-              <div className="text-white/30 text-xs mb-2">{t.role}</div>
+              <div className="text-gray-800 font-semibold text-sm">{t.name}</div>
+              <div className="text-gray-400 text-xs mb-2">{t.role}</div>
               <div className="text-gold font-display text-lg">{t.savings}</div>
             </motion.button>
           ))}
