@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import { FileText, Landmark, Home, TrendingUp } from "lucide-react";
 
@@ -60,6 +61,22 @@ export default function SystemSection() {
           <p className="text-gray-500 max-w-xl mx-auto">
             Kein Geheimnis — aber ein System, das die wenigsten konsequent umsetzen.
           </p>
+        </motion.div>
+
+        {/* Feature image */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={isInView ? { opacity: 1, scale: 1 } : {}}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="relative w-full h-64 md:h-80 rounded-2xl overflow-hidden mb-12 shadow-lg"
+        >
+          <Image
+            src="/images/apartment-interior.png"
+            alt="Modernes Apartment-Interior mit Skyline-View"
+            fill
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#faf9f6]/60 to-transparent" />
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-6">

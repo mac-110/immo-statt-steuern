@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight, Shield, Users, Star, Clock, Wallet } from "lucide-react";
 
@@ -16,10 +17,20 @@ const headlineWords = "Zahlst du noch Steuern? Oder baust du bereits Vermögen a
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      {/* Background elements */}
+      {/* Background image */}
       <div className="absolute inset-0">
-        <div className="absolute top-20 right-20 w-96 h-96 bg-gold/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 left-10 w-72 h-72 bg-gold/3 rounded-full blur-3xl" />
+        <Image
+          src="/images/hero-building.png"
+          alt="Luxus-Apartmentgebäude bei Sonnenuntergang"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#faf9f6]/90 via-[#faf9f6]/80 to-[#faf9f6]/95" />
+      </div>
+
+      {/* Decorative elements */}
+      <div className="absolute inset-0 pointer-events-none">
         <motion.div
           animate={{ y: [-20, 20, -20] }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
@@ -30,8 +41,6 @@ export default function Hero() {
           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
           className="absolute bottom-60 left-20 w-3 h-3 bg-gold/20 rounded-full"
         />
-        <div className="absolute top-1/3 left-1/4 geo-ring w-40 h-40" />
-        <div className="absolute bottom-1/4 right-1/3 geo-ring w-24 h-24" />
       </div>
 
       <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">

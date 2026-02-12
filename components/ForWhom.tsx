@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import Image from "next/image";
 import { Check, X, ArrowRight } from "lucide-react";
 
 const forYou = [
@@ -40,6 +41,22 @@ export default function ForWhom() {
           <p className="text-gray-500 max-w-xl mx-auto">
             Dieses System ist nicht für jeden. Prüfe, ob du dazu gehörst.
           </p>
+        </motion.div>
+
+        {/* Family image */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.1 }}
+          className="relative w-full h-56 md:h-72 rounded-2xl overflow-hidden mb-12 shadow-lg"
+        >
+          <Image
+            src="/images/family-home.png"
+            alt="Familie vor ihrem neuen Haus"
+            fill
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#faf9f6]/50 to-transparent" />
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-8 mb-16">

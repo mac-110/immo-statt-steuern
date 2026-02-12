@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import Image from "next/image";
 import { Phone, Search, FileCheck, PartyPopper } from "lucide-react";
 
 const steps = [
@@ -37,6 +38,15 @@ export default function StepsSection() {
 
   return (
     <section id="schritte" ref={ref} className="relative py-32 overflow-hidden">
+      <div className="absolute inset-0">
+        <Image
+          src="/images/neighborhood-aerial.png"
+          alt="Luftaufnahme einer deutschen Wohngegend"
+          fill
+          className="object-cover opacity-[0.07]"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#faf9f6] via-[#faf9f6]/90 to-[#faf9f6]" />
+      </div>
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
 
       <div className="relative max-w-5xl mx-auto px-6">

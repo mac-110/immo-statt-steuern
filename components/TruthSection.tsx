@@ -2,6 +2,7 @@
 
 import { useRef, useState, useEffect, useCallback } from "react";
 import { motion, useInView } from "framer-motion";
+import Image from "next/image";
 import { AlertTriangle, TrendingDown, ArrowRight } from "lucide-react";
 
 function CountUp({ end, prefix = "", suffix = "", decimals = 0 }: { end: number; prefix?: string; suffix?: string; decimals?: number }) {
@@ -42,7 +43,15 @@ export default function TruthSection() {
 
   return (
     <section id="wahrheit" ref={ref} className="relative py-32 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-red-50/50 to-transparent" />
+      <div className="absolute inset-0">
+        <Image
+          src="/images/neighborhood-aerial.png"
+          alt="Luftaufnahme einer deutschen Wohngegend"
+          fill
+          className="object-cover opacity-10"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#faf9f6] via-red-50/80 to-[#faf9f6]" />
+      </div>
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-red-300/20 to-transparent" />
 
       <div className="relative max-w-6xl mx-auto px-6">

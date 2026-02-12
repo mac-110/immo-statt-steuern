@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import { Quote, ChevronLeft, ChevronRight, Star } from "lucide-react";
 
 const testimonials = [
@@ -53,6 +54,15 @@ export default function Testimonials() {
 
   return (
     <section id="stimmen" ref={ref} className="relative py-32 overflow-hidden">
+      <div className="absolute inset-0">
+        <Image
+          src="/images/consultation.png"
+          alt="Beratungsgespräch im Büro"
+          fill
+          className="object-cover opacity-[0.06]"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#faf9f6]/90 to-[#faf9f6]/95" />
+      </div>
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
 
       <div className="relative max-w-6xl mx-auto px-6">
