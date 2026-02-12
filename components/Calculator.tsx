@@ -8,16 +8,43 @@ function AnimatedNumber({ value, prefix = "", suffix = "" }: { value: number; pr
   const ref = useRef<HTMLSpanElement>(null);
   const isInView = useInView(ref, { once: true });
   const [display, setDisplay] = useState(0);
+  const prevValue = useRef(value);
+  const animating = useRef(false);
 
-  if (isInView && display !== value) {
-    const duration = 1500;
+  if (isInView && prevValue.current !== value && !animating.current) {
+    animating.current = true;
+    const startVal = display;
+    const endVal = value;
+    const duration = 600;
+    const startTime = Date.now();
+    prevValue.current = value;
+    const animate = () => {
+      const elapsed = Date.now() - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setDisplay(Math.round(startVal + (endVal - startVal) * eased));
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      } else {
+        animating.current = false;
+      }
+    };
+    requestAnimationFrame(animate);
+  } else if (isInView && display === 0 && value > 0 && !animating.current) {
+    animating.current = true;
+    prevValue.current = value;
+    const duration = 1200;
     const startTime = Date.now();
     const animate = () => {
       const elapsed = Date.now() - startTime;
       const progress = Math.min(elapsed / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
       setDisplay(Math.round(eased * value));
-      if (progress < 1) requestAnimationFrame(animate);
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      } else {
+        animating.current = false;
+      }
     };
     requestAnimationFrame(animate);
   }
