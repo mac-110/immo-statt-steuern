@@ -6,6 +6,7 @@ import SystemSection from "@/components/SystemSection";
 import Testimonials from "@/components/Testimonials";
 import Steps from "@/components/Steps";
 import ForWhom from "@/components/ForWhom";
+import LeadForm from "@/components/LeadForm";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -19,6 +20,7 @@ export default function Home() {
       <Testimonials />
       <Steps />
       <ForWhom />
+      <LeadForm />
       <Footer />
     </main>
   );
