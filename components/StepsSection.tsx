@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 
@@ -72,65 +73,76 @@ export const StepsSection = () => {
           </p>
         </motion.div>
 
-        {/* Steps */}
-        <div className="space-y-8">
-          {steps.map((step, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
-              animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
-              className="relative"
-            >
+        <div className="grid lg:grid-cols-2 gap-12 items-start">
+          {/* Left: Steps */}
+          <div className="space-y-6">
+            {steps.map((step, index) => (
               <motion.div
-                whileHover={{ scale: 1.02, y: -5 }}
-                className="relative p-8 md:p-12 rounded-3xl bg-white backdrop-blur-sm border border-gray-200 hover:border-gray-300 transition-all overflow-hidden group shadow-sm"
+                key={index}
+                initial={{ opacity: 0, x: -60 }}
+                animate={isInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
+                className="relative"
               >
-                {/* Gradient background on hover */}
                 <motion.div
-                  className={`absolute inset-0 bg-gradient-to-br ${step.gradient} opacity-0 group-hover:opacity-5 transition-opacity`}
-                  initial={false}
-                />
-
-                <div className="relative flex flex-col md:flex-row items-start md:items-center gap-8">
-                  {/* Number Circle */}
+                  whileHover={{ scale: 1.02, y: -3 }}
+                  className="relative p-6 md:p-8 rounded-3xl bg-white backdrop-blur-sm border border-gray-200 hover:border-gray-300 transition-all overflow-hidden group shadow-sm"
+                >
                   <motion.div
-                    whileHover={{ rotate: 360 }}
-                    transition={{ duration: 0.6 }}
-                    className={`flex-shrink-0 w-24 h-24 rounded-full bg-gradient-to-br ${step.gradient} flex items-center justify-center text-4xl font-bold text-white shadow-lg`}
-                  >
-                    {step.number}
-                  </motion.div>
+                    className={`absolute inset-0 bg-gradient-to-br ${step.gradient} opacity-0 group-hover:opacity-5 transition-opacity`}
+                    initial={false}
+                  />
 
-                  {/* Content */}
-                  <div className="flex-1">
-                    <h3 className="text-3xl font-bold mb-3 text-gray-800">{step.title}</h3>
-                    <p className="text-gray-500 text-lg mb-4 leading-relaxed">
-                      {step.description}
-                    </p>
-                    <div className="flex flex-wrap gap-3">
-                      <span className="px-4 py-2 bg-gray-50 border border-gray-200 rounded-full text-sm text-gray-600">
-                        ⏱ {step.time}
-                      </span>
-                      <span className={`px-4 py-2 bg-gradient-to-r ${step.gradient} rounded-full text-sm font-semibold text-white`}>
-                        ✓ {step.badge}
-                      </span>
+                  <div className="relative flex items-start gap-6">
+                    {/* Number Circle */}
+                    <motion.div
+                      whileHover={{ rotate: 360 }}
+                      transition={{ duration: 0.6 }}
+                      className={`flex-shrink-0 w-16 h-16 rounded-full bg-gradient-to-br ${step.gradient} flex items-center justify-center text-2xl font-bold text-white shadow-lg`}
+                    >
+                      {step.number}
+                    </motion.div>
+
+                    {/* Content */}
+                    <div className="flex-1">
+                      <h3 className="text-xl font-bold mb-2 text-gray-800">{step.title}</h3>
+                      <p className="text-gray-500 text-sm mb-3 leading-relaxed">
+                        {step.description}
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        <span className="px-3 py-1 bg-gray-50 border border-gray-200 rounded-full text-xs text-gray-600">
+                          ⏱ {step.time}
+                        </span>
+                        <span className={`px-3 py-1 bg-gradient-to-r ${step.gradient} rounded-full text-xs font-semibold text-white`}>
+                          ✓ {step.badge}
+                        </span>
+                      </div>
                     </div>
                   </div>
-                </div>
-
-                {/* Connecting line (except for last item) */}
-                {index < steps.length - 1 && (
-                  <motion.div
-                    initial={{ scaleY: 0 }}
-                    animate={isInView ? { scaleY: 1 } : {}}
-                    transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
-                    className={`absolute left-12 md:left-12 bottom-0 w-0.5 h-8 bg-gradient-to-b ${step.gradient} origin-top`}
-                  />
-                )}
+                </motion.div>
               </motion.div>
-            </motion.div>
-          ))}
+            ))}
+          </div>
+
+          {/* Right: Image */}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="sticky top-32"
+          >
+            <div className="rounded-2xl overflow-hidden shadow-xl">
+              <Image
+                src="/images/neighborhood-aerial.png"
+                alt="Luftaufnahme einer deutschen Wohngegend"
+                width={700}
+                height={600}
+                className="object-cover w-full h-auto"
+              />
+            </div>
+            <div className="absolute -inset-4 bg-gold/8 rounded-3xl blur-3xl -z-10" />
+          </motion.div>
         </div>
 
         {/* Bottom CTA */}

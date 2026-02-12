@@ -59,9 +59,9 @@ export default function Testimonials() {
           src="/images/consultation.png"
           alt="Beratungsgespräch im Büro"
           fill
-          className="object-cover opacity-[0.06]"
+          className="object-cover opacity-30"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#faf9f6]/90 to-[#faf9f6]/95" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#faf9f6]/60 to-[#faf9f6]/70" />
       </div>
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
 

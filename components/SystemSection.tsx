@@ -45,7 +45,7 @@ export default function SystemSection() {
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
       <div className="absolute top-1/2 right-0 w-96 h-96 bg-gold/3 rounded-full blur-3xl -translate-y-1/2" />
 
-      <div className="relative max-w-6xl mx-auto px-6">
+      <div className="relative max-w-7xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -63,46 +63,53 @@ export default function SystemSection() {
           </p>
         </motion.div>
 
-        {/* Feature image */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={isInView ? { opacity: 1, scale: 1 } : {}}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative w-full h-64 md:h-80 rounded-2xl overflow-hidden mb-12 shadow-lg"
-        >
-          <Image
-            src="/images/apartment-interior.png"
-            alt="Modernes Apartment-Interior mit Skyline-View"
-            fill
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#faf9f6]/60 to-transparent" />
-        </motion.div>
+        <div className="grid lg:grid-cols-2 gap-12 items-start">
+          {/* Left: Image */}
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="relative"
+          >
+            <div className="rounded-2xl overflow-hidden shadow-xl">
+              <Image
+                src="/images/apartment-interior.png"
+                alt="Modernes Apartment-Interior mit Skyline-View"
+                width={700}
+                height={500}
+                className="object-cover w-full h-auto"
+              />
+            </div>
+            <div className="absolute -inset-4 bg-gold/8 rounded-3xl blur-3xl -z-10" />
+          </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-6">
-          {principles.map((p, i) => (
-            <motion.div
-              key={p.title}
-              initial={{ opacity: 0, y: 40 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.2 + i * 0.15 }}
-              className="glass-card p-8 group hover:border-gold/20 hover:-translate-y-1 hover:shadow-[0_20px_60px_-15px_rgba(59,125,110,0.1)] transition-all duration-500"
-            >
-              <div className="flex items-start gap-5">
-                <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-gold/10 flex items-center justify-center group-hover:bg-gold/20 transition-colors">
-                  <p.icon size={24} className="text-gold" />
-                </div>
-                <div>
-                  <div className="text-gold/80 text-sm font-semibold tracking-wider uppercase mb-1">
-                    Prinzip {i + 1}
+          {/* Right: Cards */}
+          <div className="grid gap-6">
+            {principles.map((p, i) => (
+              <motion.div
+                key={p.title}
+                initial={{ opacity: 0, y: 40 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: 0.2 + i * 0.15 }}
+                className="glass-card p-6 group hover:border-gold/20 hover:-translate-y-1 hover:shadow-[0_20px_60px_-15px_rgba(59,125,110,0.1)] transition-all duration-500"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-gold/10 flex items-center justify-center group-hover:bg-gold/20 transition-colors">
+                    <p.icon size={22} className="text-gold" />
                   </div>
-                  <h3 className="font-display text-xl text-gray-800 mb-1">{p.title}</h3>
-                  <div className="text-gold font-semibold text-sm mb-3">{p.highlight}</div>
-                  <p className="text-gray-500 leading-relaxed">{p.description}</p>
+                  <div>
+                    <div className="text-gold/80 text-xs font-semibold tracking-wider uppercase mb-1">
+                      Prinzip {i + 1}
+                    </div>
+                    <h3 className="font-display text-lg text-gray-800 mb-1">{p.title}</h3>
+                    <div className="text-gold font-semibold text-sm mb-2">{p.highlight}</div>
+                    <p className="text-gray-500 text-sm leading-relaxed">{p.description}</p>
+                  </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

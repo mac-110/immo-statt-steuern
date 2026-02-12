@@ -16,114 +16,114 @@ const headlineWords = "Zahlst du noch Steuern? Oder baust du bereits Vermögen a
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      {/* Background image */}
-      <div className="absolute inset-0">
-        <Image
-          src="/images/hero-building.png"
-          alt="Luxus-Apartmentgebäude bei Sonnenuntergang"
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#faf9f6]/90 via-[#faf9f6]/80 to-[#faf9f6]/95" />
-      </div>
-
-      {/* Decorative elements */}
-      <div className="absolute inset-0 pointer-events-none">
-        <motion.div
-          animate={{ y: [-20, 20, -20] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-40 right-40 w-2 h-2 bg-gold/40 rounded-full"
-        />
-        <motion.div
-          animate={{ y: [15, -15, 15] }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-60 left-20 w-3 h-3 bg-gold/20 rounded-full"
-        />
-      </div>
-
-      <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
-        {/* Overline */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-gold/20 bg-gold/5 mb-8"
-        >
-          <div className="w-2 h-2 bg-gold rounded-full animate-pulse" />
-          <span className="text-gold text-sm tracking-widest uppercase">
-            Exklusive Steuer-Strategie
-          </span>
-        </motion.div>
-
-        {/* Headline - word by word reveal */}
-        <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight mb-8">
-          {headlineWords.map((word, i) => (
-            <motion.span
-              key={i}
-              initial={{ opacity: 0, y: 40 }}
+    <section className="relative min-h-screen flex items-center overflow-hidden pt-20">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 w-full">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left: Text */}
+          <div>
+            {/* Overline */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.5,
-                delay: 0.3 + i * 0.08,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className={`inline-block mr-[0.3em] ${
-                ["Steuern?", "Vermögen"].includes(word)
-                  ? "gold-text"
-                  : "text-gray-800"
-              }`}
+              transition={{ duration: 0.6 }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-gold/20 bg-gold/5 mb-8"
             >
-              {word}
-            </motion.span>
-          ))}
-        </h1>
+              <div className="w-2 h-2 bg-gold rounded-full animate-pulse" />
+              <span className="text-gold text-sm tracking-widest uppercase">
+                Exklusive Steuer-Strategie
+              </span>
+            </motion.div>
 
-        {/* Subtext */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.2 }}
-          className="text-lg md:text-xl text-gray-500 max-w-2xl mx-auto mb-12 leading-relaxed"
-        >
-          Während die meisten Top-Verdiener 42–45% Steuern zahlen, bauen sich
-          Insider ein Vermögen mit Immobilien auf.
-        </motion.p>
+            {/* Headline */}
+            <h1 className="font-display text-4xl sm:text-5xl md:text-6xl leading-tight mb-8">
+              {headlineWords.map((word, i) => (
+                <motion.span
+                  key={i}
+                  initial={{ opacity: 0, y: 40 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 0.5,
+                    delay: 0.3 + i * 0.08,
+                    ease: [0.22, 1, 0.36, 1],
+                  }}
+                  className={`inline-block mr-[0.3em] ${
+                    ["Steuern?", "Vermögen"].includes(word)
+                      ? "gold-text"
+                      : "text-gray-800"
+                  }`}
+                >
+                  {word}
+                </motion.span>
+              ))}
+            </h1>
 
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.5 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20"
-        >
-          <a
-            href="#analyse"
-            className="group relative px-8 py-4 bg-gold text-white font-bold rounded-full text-lg overflow-hidden transition-all duration-300 hover:shadow-[0_0_40px_rgba(59,125,110,0.3)]"
+            {/* Subtext */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1.2 }}
+              className="text-lg md:text-xl text-gray-500 max-w-xl mb-10 leading-relaxed"
+            >
+              Während die meisten Top-Verdiener 42–45% Steuern zahlen, bauen sich
+              Insider ein Vermögen mit Immobilien auf.
+            </motion.p>
+
+            {/* CTA */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1.5 }}
+              className="flex flex-col sm:flex-row items-start gap-4 mb-12"
+            >
+              <a
+                href="#analyse"
+                className="group relative px-8 py-4 bg-gold text-white font-bold rounded-full text-lg overflow-hidden transition-all duration-300 hover:shadow-[0_0_40px_rgba(59,125,110,0.3)]"
+              >
+                <span className="relative z-10 flex items-center gap-2">
+                  Steuerersparnis Analyse
+                  <ArrowRight
+                    size={20}
+                    className="group-hover:translate-x-1 transition-transform"
+                  />
+                </span>
+              </a>
+              <a
+                href="#rechner"
+                className="px-8 py-4 border border-gray-200 text-gray-600 rounded-full hover:border-gold/30 hover:text-gold transition-all duration-300"
+              >
+                Schnellrechner testen
+              </a>
+            </motion.div>
+          </div>
+
+          {/* Right: Image */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.5 }}
+            className="relative"
           >
-            <span className="relative z-10 flex items-center gap-2">
-              Steuerersparnis Analyse
-              <ArrowRight
-                size={20}
-                className="group-hover:translate-x-1 transition-transform"
+            <div className="relative rounded-2xl overflow-hidden shadow-xl">
+              <Image
+                src="/images/hero-building.png"
+                alt="Luxus-Apartmentgebäude bei Sonnenuntergang"
+                width={700}
+                height={800}
+                className="object-cover w-full h-auto"
+                priority
               />
-            </span>
-          </a>
-          <a
-            href="#rechner"
-            className="px-8 py-4 border border-gray-200 text-gray-600 rounded-full hover:border-gold/30 hover:text-gold transition-all duration-300"
-          >
-            Schnellrechner testen
-          </a>
-        </motion.div>
+            </div>
+            {/* Decorative glow */}
+            <div className="absolute -inset-4 bg-gold/10 rounded-3xl blur-3xl -z-10" />
+          </motion.div>
+        </div>
 
         {/* Stats */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.8 }}
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 md:gap-6"
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 md:gap-6 mt-16"
         >
           {stats.map((stat, i) => (
             <motion.div

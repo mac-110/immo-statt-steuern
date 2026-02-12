@@ -48,9 +48,9 @@ export default function TruthSection() {
           src="/images/neighborhood-aerial.png"
           alt="Luftaufnahme einer deutschen Wohngegend"
           fill
-          className="object-cover opacity-10"
+          className="object-cover opacity-40"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#faf9f6] via-red-50/80 to-[#faf9f6]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#faf9f6]/70 via-red-50/60 to-[#faf9f6]/70" />
       </div>
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-red-300/20 to-transparent" />
 
