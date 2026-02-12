@@ -1,111 +1,86 @@
-'use client';
+"use client";
 
-import { motion, useInView } from 'framer-motion';
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, useCallback } from "react";
+import { motion, useInView } from "framer-motion";
+import { AlertTriangle, TrendingDown, ArrowRight } from "lucide-react";
 
-const AnimatedCounter = ({ value, suffix = '', prefix = '' }: { value: number; suffix?: string; prefix?: string }) => {
-  const [count, setCount] = useState(0);
-  const ref = useRef(null);
+function CountUp({ end, prefix = "", suffix = "", decimals = 0 }: { end: number; prefix?: string; suffix?: string; decimals?: number }) {
+  const ref = useRef<HTMLSpanElement>(null);
   const isInView = useInView(ref, { once: true });
+  const [value, setValue] = useState(0);
+  const hasAnimated = useRef(false);
+
+  const animate = useCallback(() => {
+    if (hasAnimated.current) return;
+    hasAnimated.current = true;
+    const duration = 2000;
+    const start = Date.now();
+    const tick = () => {
+      const elapsed = Date.now() - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 4);
+      setValue(eased * end);
+      if (progress < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }, [end]);
 
   useEffect(() => {
-    if (isInView) {
-      const duration = 2000;
-      const steps = 60;
-      const increment = value / steps;
-      let current = 0;
+    if (isInView) animate();
+  }, [isInView, animate]);
 
-      const timer = setInterval(() => {
-        current += increment;
-        if (current >= value) {
-          setCount(value);
-          clearInterval(timer);
-        } else {
-          setCount(Math.floor(current));
-        }
-      }, duration / steps);
+  const formatted = decimals > 0
+    ? value.toFixed(decimals)
+    : Math.round(value).toLocaleString("de-DE");
 
-      return () => clearInterval(timer);
-    }
-  }, [isInView, value]);
+  return <span ref={ref}>{prefix}{formatted}{suffix}</span>;
+}
 
-  return (
-    <span ref={ref}>
-      {prefix}
-      {count.toLocaleString('de-DE')}
-      {suffix}
-    </span>
-  );
-};
-
-export const TruthSection = () => {
+export default function TruthSection() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
-
-  const stats = [
-    { value: 3750, suffix: '€', label: 'pro Monat bei €100k Jahresgehalt', sublabel: 'Gehen direkt ans Finanzamt – ohne dass du davon profitierst' },
-    { value: 450, suffix: 'k€', label: 'in 10 Jahren verloren', sublabel: 'Das ist eine abbezahlte Eigentumswohnung – einfach weg' },
-    { value: 0, suffix: '%', label: 'Vermögensaufbau-Rate', sublabel: 'Während andere Vermögen aufbauen, stehst du still' },
-  ];
-
-  const comparison = [
-    { label: 'DU HEUTE', value: '42-45%', sublabel: 'Steuerlast als Top-Verdiener', color: 'from-red-500 to-orange-500' },
-    { label: 'MIT SYSTEM', value: '8-15%', sublabel: 'Effektive Steuerlast + Vermögensaufbau', color: 'from-green-500 to-emerald-500' },
-  ];
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section ref={ref} className="relative py-32 bg-white text-black">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Badge */}
+    <section id="wahrheit" ref={ref} className="relative py-32 overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-navy via-red-950/5 to-navy" />
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-red-500/20 to-transparent" />
+
+      <div className="relative max-w-6xl mx-auto px-6">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-8"
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
         >
-          <span className="inline-block px-4 py-2 bg-red-100 text-red-600 rounded-full font-semibold text-sm">
-            Die brutale Wahrheit
-          </span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-red-500/20 bg-red-500/5 mb-6">
+            <AlertTriangle size={16} className="text-red-400" />
+            <span className="text-red-400/80 text-sm tracking-widest uppercase">Die brutale Wahrheit</span>
+          </div>
+          <h2 className="font-display text-3xl md:text-5xl text-white mb-4">
+            So viel verlierst du <span className="text-red-400">jeden Monat</span>
+          </h2>
         </motion.div>
 
-        {/* Heading */}
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-4xl md:text-6xl lg:text-7xl font-bold text-center mb-6"
-        >
-          Du verlierst jeden Monat
-          <br />
-          <span className="text-red-600">Tausende Euro</span>
-        </motion.h2>
-
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-xl md:text-2xl text-center text-gray-600 mb-20"
-        >
-          ...ohne es zu merken. Und das Schlimmste?{' '}
-          <span className="font-semibold text-black">Dein Steuerberater sagt dir das nicht.</span>
-        </motion.p>
-
-        {/* Stats Grid */}
-        <div className="grid md:grid-cols-3 gap-8 mb-24">
-          {stats.map((stat, index) => (
+        {/* Big stats */}
+        <div className="grid md:grid-cols-3 gap-8 mb-20">
+          {[
+            { value: 3750, prefix: "€", suffix: "/Monat", label: "gehen ans Finanzamt", sub: "bei 100k Jahresgehalt" },
+            { value: 450000, prefix: "€", suffix: "", label: "in 10 Jahren verloren", sub: "unwiederbringlich" },
+            { value: 0, prefix: "", suffix: "%", label: "Vermögensaufbau-Rate", sub: "kein Vermögen entsteht" },
+          ].map((stat, i) => (
             <motion.div
-              key={index}
+              key={stat.label}
               initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
-              whileHover={{ y: -10, scale: 1.02 }}
-              className="p-8 rounded-3xl bg-gradient-to-br from-gray-50 to-gray-100 border border-gray-200 hover:border-gray-300 transition-all"
+              transition={{ duration: 0.6, delay: 0.2 + i * 0.15 }}
+              className="glass-card p-8 text-center group hover:border-red-500/20 transition-all duration-500"
             >
-              <div className="text-5xl md:text-6xl font-bold text-red-600 mb-4">
-                <AnimatedCounter value={stat.value} suffix={stat.suffix} />
+              <TrendingDown size={24} className="mx-auto mb-4 text-red-400/60" />
+              <div className="text-4xl md:text-5xl font-display text-red-400 mb-2">
+                <CountUp end={stat.value} prefix={stat.prefix} suffix={stat.suffix} />
               </div>
-              <div className="text-xl font-semibold text-black mb-2">{stat.label}</div>
-              <div className="text-gray-600">{stat.sublabel}</div>
+              <div className="text-white/70 font-medium mb-1">{stat.label}</div>
+              <div className="text-white/30 text-sm">{stat.sub}</div>
             </motion.div>
           ))}
         </div>
@@ -114,61 +89,57 @@ export const TruthSection = () => {
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.9 }}
-          className="grid md:grid-cols-2 gap-8 mb-16"
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="grid md:grid-cols-2 gap-6"
         >
-          {comparison.map((item, index) => (
-            <motion.div
-              key={index}
-              whileHover={{ scale: 1.05 }}
-              className="relative p-10 rounded-3xl overflow-hidden"
-            >
-              <div className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-10`} />
-              <div className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-0 hover:opacity-5 transition-opacity`} />
-              <div className="relative">
-                <div className="text-sm font-semibold text-gray-600 mb-2">{item.label}</div>
-                <div className={`text-6xl md:text-7xl font-bold mb-4 bg-gradient-to-r ${item.color} bg-clip-text text-transparent`}>
-                  {item.value}
-                </div>
-                <div className="text-lg text-gray-700">{item.sublabel}</div>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
-
-        {/* Salary comparison */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 1.1 }}
-          className="bg-gradient-to-br from-gray-900 to-black text-white p-10 rounded-3xl"
-        >
-          <h3 className="text-2xl md:text-3xl font-bold mb-8 text-center">
-            So verändert sich deine Gehaltsabrechnung
-          </h3>
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="p-6 bg-red-500/10 border border-red-500/20 rounded-2xl">
-              <div className="text-sm font-semibold text-red-400 mb-4">VORHER</div>
-              <div className="space-y-2 text-gray-300">
-                <div>Brutto: €60.000</div>
-                <div>Steuer: €18.000</div>
-                <div className="text-xl font-bold text-white pt-2">Netto: €42.000</div>
-              </div>
+          {/* Current */}
+          <div className="glass-card p-8 border-red-500/10 hover:border-red-500/20 transition-all duration-500">
+            <div className="text-red-400 text-sm uppercase tracking-widest mb-4 font-semibold">
+              Du heute
             </div>
-            <div className="p-6 bg-green-500/10 border border-green-500/20 rounded-2xl">
-              <div className="text-sm font-semibold text-green-400 mb-4">NACHHER</div>
-              <div className="space-y-2 text-gray-300">
-                <div>Brutto: €60.000</div>
-                <div>Steuer: €9.000</div>
-                <div className="text-xl font-bold text-white pt-2">Netto: €51.000</div>
-              </div>
+            <div className="text-6xl font-display text-red-400 mb-2">42–45%</div>
+            <div className="text-white/50 mb-6">Steuerlast auf dein Einkommen</div>
+            <div className="space-y-3">
+              {["Kein Vermögensaufbau", "Steuern steigen weiter", "Inflation frisst Erspartes"].map(
+                (item) => (
+                  <div key={item} className="flex items-center gap-3 text-white/40">
+                    <div className="w-1.5 h-1.5 bg-red-400/50 rounded-full" />
+                    {item}
+                  </div>
+                )
+              )}
             </div>
           </div>
-          <p className="text-center text-sm text-gray-400 mt-6">
-            Beispielrechnung bei 60.000 € Jahresgehalt (Steuerklasse 1) mit Immobilieninvestment
-          </p>
+
+          {/* With system */}
+          <div className="glass-card-gold p-8 hover:border-gold/30 transition-all duration-500 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-gold/5 rounded-full blur-2xl" />
+            <div className="relative">
+              <div className="text-gold text-sm uppercase tracking-widest mb-4 font-semibold">
+                Mit System
+              </div>
+              <div className="text-6xl font-display gold-text mb-2">8–15%</div>
+              <div className="text-white/50 mb-6">Effektive Steuerlast + Vermögensaufbau</div>
+              <div className="space-y-3 mb-8">
+                {["Aktiver Vermögensaufbau", "Steuerersparnis ab Tag 1", "Inflationsschutz durch Immobilien"].map(
+                  (item) => (
+                    <div key={item} className="flex items-center gap-3 text-white/60">
+                      <div className="w-1.5 h-1.5 bg-gold rounded-full" />
+                      {item}
+                    </div>
+                  )
+                )}
+              </div>
+              <a
+                href="#analyse"
+                className="inline-flex items-center gap-2 text-gold hover:text-gold-light transition-colors font-semibold"
+              >
+                Jetzt wechseln <ArrowRight size={16} />
+              </a>
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>
   );
-};
+}
