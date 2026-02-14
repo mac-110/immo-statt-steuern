@@ -9,6 +9,8 @@ type FormData = {
   name: string;
   email: string;
   phone: string;
+  source: string;
+  sourceDetail: string;
   employmentType: string;
   employedSince: string;
   grossIncome: string;
@@ -105,6 +107,8 @@ export default function LeadForm() {
     name: "",
     email: "",
     phone: "",
+    source: "",
+    sourceDetail: "",
     employmentType: "",
     employedSince: "",
     grossIncome: "",
@@ -158,6 +162,8 @@ export default function LeadForm() {
         investmentBudget: form.investmentBudget || undefined,
         notes: form.notes.trim() || undefined,
         schufaClean: form.schufaClean || undefined,
+        source: form.source || undefined,
+        sourceDetail: form.source === "sonstiges" ? (form.sourceDetail.trim() || undefined) : undefined,
       });
       setSubmitted(true);
     } catch {
@@ -250,6 +256,32 @@ export default function LeadForm() {
 
               {errors.contact && <p className="text-red-500 text-xs">{errors.contact}</p>}
               <p className="text-foreground/40 text-xs">* E-Mail oder Telefon — mindestens eins davon.</p>
+
+              <div>
+                <label className="block text-sm text-foreground/70 mb-1.5">Wie bist du auf uns aufmerksam geworden?</label>
+                <div className="space-y-2">
+                  {[
+                    { value: "reddit", label: "Reddit" },
+                    { value: "linkedin", label: "LinkedIn" },
+                    { value: "google", label: "Google Suche" },
+                    { value: "empfehlung", label: "Empfehlung / Bekannte" },
+                    { value: "sonstiges", label: "Sonstiges" },
+                  ].map((opt) => (
+                    <OptionButton key={opt.value} selected={form.source === opt.value} onClick={() => update("source", opt.value)}>
+                      {opt.label}
+                    </OptionButton>
+                  ))}
+                </div>
+                {form.source === "sonstiges" && (
+                  <input
+                    type="text"
+                    value={form.sourceDetail}
+                    onChange={(e) => update("sourceDetail", e.target.value)}
+                    placeholder="Woher genau?"
+                    className="w-full mt-2 px-4 py-3 rounded-xl border border-navy-300 bg-white/60 text-foreground placeholder:text-foreground/30 focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold/30 transition-all text-sm sm:text-base"
+                  />
+                )}
+              </div>
             </div>
           )}
 
@@ -388,6 +420,12 @@ export default function LeadForm() {
                   <div className="flex justify-between py-2 border-b border-navy-200">
                     <span className="text-foreground/60">Telefon</span>
                     <span className="font-medium">{form.phone}</span>
+                  </div>
+                )}
+                {form.source && (
+                  <div className="flex justify-between py-2 border-b border-navy-200">
+                    <span className="text-foreground/60">Quelle</span>
+                    <span className="font-medium">{form.source === "sonstiges" ? (form.sourceDetail || "Sonstiges") : form.source.charAt(0).toUpperCase() + form.source.slice(1)}</span>
                   </div>
                 )}
                 <div className="flex justify-between py-2 border-b border-navy-200">
