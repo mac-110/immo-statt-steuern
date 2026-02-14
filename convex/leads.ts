@@ -1,5 +1,30 @@
-import { mutation } from "./_generated/server";
+import { mutation, query } from "./_generated/server";
 import { v } from "convex/values";
+
+export const listLeads = query({
+  args: {},
+  handler: async (ctx) => {
+    const leads = await ctx.db.query("leads").order("desc").collect();
+    return leads;
+  },
+});
+
+export const updateLeadStatus = mutation({
+  args: {
+    id: v.id("leads"),
+    status: v.string(),
+  },
+  handler: async (ctx, args) => {
+    await ctx.db.patch(args.id, { status: args.status });
+  },
+});
+
+export const deleteLead = mutation({
+  args: { id: v.id("leads") },
+  handler: async (ctx, args) => {
+    await ctx.db.delete(args.id);
+  },
+});
 
 export const createLead = mutation({
   args: {
