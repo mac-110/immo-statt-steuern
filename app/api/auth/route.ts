@@ -22,3 +22,15 @@ export async function POST(req: NextRequest) {
 
   return NextResponse.json({ error: "Falsches Passwort" }, { status: 401 });
 }
+
+export async function DELETE() {
+  const response = NextResponse.json({ success: true });
+  response.cookies.set("admin_auth", "", {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "strict",
+    maxAge: 0,
+    path: "/admin",
+  });
+  return response;
+}

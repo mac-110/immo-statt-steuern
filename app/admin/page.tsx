@@ -2,85 +2,7 @@
 
 import { useQuery, useMutation } from "convex/react";
 import { api } from "../../convex/_generated/api";
-import { useState, useEffect } from "react";
-
-// ─── Auth Gate ───────────────────────────────────────────────
-function useAdminAuth() {
-  const [authed, setAuthed] = useState<boolean | null>(null); // null = loading
-
-  useEffect(() => {
-    const token = sessionStorage.getItem("admin_token");
-    if (!token) { setAuthed(false); return; }
-    fetch("/api/admin-auth", { headers: { "x-admin-token": token } })
-      .then((r) => setAuthed(r.ok))
-      .catch(() => setAuthed(false));
-  }, []);
-
-  const login = async (password: string): Promise<string | null> => {
-    const res = await fetch("/api/admin-auth", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ password }),
-    });
-    if (res.ok) {
-      const { token } = await res.json();
-      sessionStorage.setItem("admin_token", token);
-      setAuthed(true);
-      return null;
-    }
-    const { error } = await res.json();
-    return error ?? "Fehler bei der Anmeldung";
-  };
-
-  const logout = () => {
-    sessionStorage.removeItem("admin_token");
-    setAuthed(false);
-  };
-
-  return { authed, login, logout };
-}
-
-function LoginScreen({ onLogin }: { onLogin: (pw: string) => Promise<string | null> }) {
-  const [pw, setPw] = useState("");
-  const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    setError(null);
-    const err = await onLogin(pw);
-    if (err) { setError(err); setLoading(false); }
-  };
-
-  return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
-      <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow-md border border-gray-200 p-8 w-full max-w-sm">
-        <h1 className="text-xl font-bold text-gray-900 mb-1">Admin-Bereich</h1>
-        <p className="text-sm text-gray-500 mb-6">Bitte Passwort eingeben</p>
-        {error && (
-          <div className="mb-4 bg-red-50 border border-red-200 text-red-700 text-sm rounded-lg p-3">{error}</div>
-        )}
-        <input
-          type="password"
-          value={pw}
-          onChange={(e) => setPw(e.target.value)}
-          placeholder="Passwort"
-          autoFocus
-          required
-          className="w-full border border-gray-300 rounded-lg px-4 py-2 mb-4 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-        />
-        <button
-          type="submit"
-          disabled={loading}
-          className="w-full bg-gray-900 text-white rounded-lg px-4 py-2 text-sm font-medium hover:bg-gray-800 disabled:opacity-50"
-        >
-          {loading ? "Prüfe…" : "Anmelden"}
-        </button>
-      </form>
-    </div>
-  );
-}
+import { useState } from "react";
 
 const STATUS_OPTIONS = [
   { value: "new", label: "Neu", color: "bg-blue-100 text-blue-800" },
@@ -106,19 +28,6 @@ function formatDate(ts: number) {
 }
 
 export default function AdminPage() {
-  const { authed, login, logout } = useAdminAuth();
-
-  if (authed === null) {
-    return <div className="min-h-screen bg-gray-50 flex items-center justify-center text-gray-400">Lade…</div>;
-  }
-  if (!authed) {
-    return <LoginScreen onLogin={login} />;
-  }
-
-  return <AdminDashboard onLogout={logout} />;
-}
-
-function AdminDashboard({ onLogout }: { onLogout: () => void }) {
   const leads = useQuery(api.leads.listLeads);
   const updateStatus = useMutation(api.leads.updateLeadStatus);
   const deleteLead = useMutation(api.leads.deleteLead);
@@ -139,6 +48,11 @@ function AdminDashboard({ onLogout }: { onLogout: () => void }) {
     }
   };
 
+  const handleLogout = async () => {
+    await fetch("/api/auth", { method: "DELETE" });
+    window.location.reload();
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
@@ -153,7 +67,7 @@ function AdminDashboard({ onLogout }: { onLogout: () => void }) {
               ← Zur Webseite
             </a>
             <button
-              onClick={onLogout}
+              onClick={handleLogout}
               className="text-sm text-red-500 hover:text-red-700"
             >
               Abmelden
