@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Plus_Jakarta_Sans } from "next/font/google";
+import ConvexClientProvider from "@/components/ConvexClientProvider";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -34,7 +35,7 @@ export default function RootLayout({
     <html lang="de" className={`${playfair.variable} ${jakarta.variable}`}>
       <body className="font-body antialiased">
         <div className="grain-overlay" />
-        {children}
+        <ConvexClientProvider>{children}</ConvexClientProvider>
       </body>
     </html>
   );
