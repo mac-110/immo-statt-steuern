@@ -37,6 +37,7 @@ export const createLead = mutation({
     employedSince: v.optional(v.string()),
     investmentBudget: v.optional(v.string()),
     notes: v.optional(v.string()),
+    schufaClean: v.optional(v.string()),
     source: v.optional(v.string()),
     sourceDetail: v.optional(v.string()),
   },

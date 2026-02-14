@@ -15,6 +15,7 @@ type FormData = {
   equity: string;
   investmentBudget: string;
   notes: string;
+  schufaClean: string;
 };
 
 const EMPLOYMENT_TYPES = [
@@ -110,6 +111,7 @@ export default function LeadForm() {
     equity: "",
     investmentBudget: "",
     notes: "",
+    schufaClean: "",
   });
 
   const update = (field: keyof FormData, value: string) => {
@@ -129,6 +131,7 @@ export default function LeadForm() {
       if (!form.grossIncome) newErrors.grossIncome = "Bitte wähle dein Bruttoeinkommen.";
     }
     if (s === 2) {
+      if (!form.schufaClean) newErrors.schufaClean = "Bitte beantworte die SCHUFA-Frage.";
       if (!form.equity) newErrors.equity = "Bitte wähle dein verfügbares Eigenkapital.";
     }
     setErrors(newErrors);
@@ -154,6 +157,7 @@ export default function LeadForm() {
         employedSince: form.employedSince || undefined,
         investmentBudget: form.investmentBudget || undefined,
         notes: form.notes.trim() || undefined,
+        schufaClean: form.schufaClean || undefined,
       });
       setSubmitted(true);
     } catch {
@@ -299,6 +303,31 @@ export default function LeadForm() {
             <div className="space-y-6">
               <div>
                 <div className="flex items-center gap-2 mb-3">
+                  <CheckCircle2 className="w-4 h-4 text-gold" />
+                  <span className="text-sm font-medium text-foreground/80">SCHUFA-Auskunft *</span>
+                </div>
+                <p className="text-xs text-foreground/50 mb-3">Für eine Immobilienfinanzierung ist eine saubere SCHUFA Voraussetzung.</p>
+                <div className="space-y-2">
+                  <OptionButton selected={form.schufaClean === "ja"} onClick={() => update("schufaClean", "ja")}>
+                    Ja, meine SCHUFA ist sauber (keine negativen Einträge)
+                  </OptionButton>
+                  <OptionButton selected={form.schufaClean === "nein"} onClick={() => update("schufaClean", "nein")}>
+                    Nein, ich habe negative SCHUFA-Einträge
+                  </OptionButton>
+                  <OptionButton selected={form.schufaClean === "unsicher"} onClick={() => update("schufaClean", "unsicher")}>
+                    Bin mir nicht sicher
+                  </OptionButton>
+                </div>
+                {errors.schufaClean && <p className="text-red-500 text-xs mt-1">{errors.schufaClean}</p>}
+                {form.schufaClean === "nein" && (
+                  <div className="mt-3 bg-red-50 border border-red-200 rounded-xl p-4 text-sm text-red-700">
+                    <strong>Hinweis:</strong> Mit negativen SCHUFA-Einträgen ist eine Immobilienfinanzierung leider in der Regel nicht möglich. Du kannst die Anfrage trotzdem absenden — wir schauen uns deinen Fall an.
+                  </div>
+                )}
+              </div>
+
+              <div>
+                <div className="flex items-center gap-2 mb-3">
                   <PiggyBank className="w-4 h-4 text-gold" />
                   <span className="text-sm font-medium text-foreground/80">Verfügbares Eigenkapital *</span>
                 </div>
@@ -374,6 +403,10 @@ export default function LeadForm() {
                 <div className="flex justify-between py-2 border-b border-navy-200">
                   <span className="text-foreground/60">Bruttoeinkommen</span>
                   <span className="font-medium">{INCOME_RANGES.find((e) => e.value === form.grossIncome)?.label}</span>
+                </div>
+                <div className="flex justify-between py-2 border-b border-navy-200">
+                  <span className="text-foreground/60">SCHUFA</span>
+                  <span className="font-medium">{form.schufaClean === "ja" ? "Sauber" : form.schufaClean === "nein" ? "Negative Einträge" : "Unsicher"}</span>
                 </div>
                 <div className="flex justify-between py-2 border-b border-navy-200">
                   <span className="text-foreground/60">Eigenkapital</span>
