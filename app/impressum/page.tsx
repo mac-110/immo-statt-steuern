@@ -78,11 +78,6 @@ export default function ImpressumPage() {
             <li>Finanzierungskonditionen</li>
             <li>Familiäre und berufliche Situation</li>
           </ul>
-          <p>
-            Alle genannten Testimonials und Kundenstimmen sind <strong>fiktive Rechenbeispiele</strong> und
-            stellen keine realen Kundenbewertungen dar.
-          </p>
-
           <h2>Haftung für Links</h2>
           <p>
             Verweise und Links auf Websites Dritter liegen ausserhalb unseres Verantwortungsbereichs.

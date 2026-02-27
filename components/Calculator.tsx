@@ -144,8 +144,8 @@ export default function CalculatorSection() {
                 <div className="text-gray-700 font-semibold">€250.000</div>
               </div>
               <div className="glass-card p-4">
-                <div className="text-gray-400">Gebäudeanteil</div>
-                <div className="text-gray-700 font-semibold">75%</div>
+                <div className="text-gray-400">Eigenkapital</div>
+                <div className="text-gold font-semibold">€0</div>
               </div>
               <div className="glass-card p-4">
                 <div className="text-gray-400">Zinsen</div>

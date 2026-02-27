@@ -15,10 +15,10 @@ const principles = [
   },
   {
     icon: Landmark,
-    title: "Bis 100% Bankfinanzierung",
-    highlight: "Wenig Eigenkapital",
+    title: "110% Bankfinanzierung",
+    highlight: "0€ Eigenkapital",
     description:
-      "Viele Banken finanzieren bis zu 100% des Kaufpreises — Nebenkosten (ca. 10-15%) sind in der Regel aus Eigenmitteln zu tragen.",
+      "Die Bank finanziert alles — Kaufpreis plus Nebenkosten. Du startest ohne einen Cent eigenes Kapital.",
   },
   {
     icon: Home,

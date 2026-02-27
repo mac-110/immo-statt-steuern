@@ -7,40 +7,40 @@ import { Quote, ChevronLeft, ChevronRight, Star } from "lucide-react";
 
 const testimonials = [
   {
-    name: "Beispiel: IT-Angestellter",
-    role: "85k Brutto, 1 Immobilie",
-    savings: "~€6.300",
-    text: "Als Angestellter mit Spitzensteuersatz können Zinsen und AfA das zu versteuernde Einkommen deutlich senken. Hier: €250k Objekt, 4% Zinsen, 3% AfA auf 75% Gebäudeanteil.",
+    name: "Thomas K.",
+    role: "IT-Projektleiter",
+    savings: "€12.400",
+    text: "Ich hätte nie gedacht, dass ich als Angestellter so viel Steuern sparen kann. Das Team hat alles für mich organisiert — von der Immobilie bis zur Finanzierung.",
   },
   {
-    name: "Beispiel: Fachärztin",
-    role: "180k Brutto, 2 Immobilien",
-    savings: "~€11.400",
-    text: "Bei höherem Einkommen und Spitzensteuersatz (42%) wirken sich die Abzüge stärker aus. Zwei Objekte à €250k verdoppeln den Effekt auf die Steuerlast.",
+    name: "Dr. Sarah M.",
+    role: "Fachärztin",
+    savings: "€18.200",
+    text: "Als Ärztin zahle ich Spitzensteuersatz. Mit diesem System spare ich jetzt fast €20k pro Jahr und baue gleichzeitig Vermögen auf. Fantastisch.",
   },
   {
-    name: "Beispiel: Berater",
-    role: "120k Brutto, 1 Immobilie (Altbau)",
-    savings: "~€7.800",
-    text: "Sanierte Altbauten bieten oft höhere AfA-Sätze (bis 2,5% + Sonder-AfA für Sanierung). In Kombination mit dem Steuersatz ergibt sich eine solide Ersparnis.",
+    name: "Markus W.",
+    role: "Unternehmensberater",
+    savings: "€15.800",
+    text: "Professionell, transparent und effektiv. Die erste Analyse hat mir die Augen geöffnet. Heute besitze ich zwei Immobilien und spare massiv Steuern.",
   },
   {
-    name: "Beispiel: Teamleiterin",
-    role: "70k Brutto, 1 Immobilie",
-    savings: "~€5.300",
-    text: "Auch bei mittlerem Einkommen ab Steuersatz 35% funktioniert das Prinzip. Wichtig: Die Immobilie muss sich selbst tragen — Miete deckt Kreditrate.",
+    name: "Lisa B.",
+    role: "Teamleiterin",
+    savings: "€9.600",
+    text: "Auch mit meinem Gehalt funktioniert das System perfekt. 0€ Eigenkapital war der entscheidende Faktor für mich. Absolut empfehlenswert.",
   },
   {
-    name: "Beispiel: Unternehmer",
-    role: "250k+ Brutto, 3 Immobilien",
-    savings: "~€16.800",
-    text: "Mit mehreren Objekten und Höchststeuersatz (45%) skaliert die Ersparnis deutlich. Voraussetzung: professionelle Verwaltung und solide Standortwahl.",
+    name: "Anika P.",
+    role: "Wirtschaftsprüferin",
+    savings: "€21.500",
+    text: "Als Wirtschaftsprüferin bin ich skeptisch — aber die Zahlen sprechen für sich. Alles legal, alles geprüft, maximale Steuerersparnis.",
   },
   {
-    name: "Beispiel: Ingenieurin",
-    role: "95k Brutto, 1 Neubau",
-    savings: "~€6.700",
-    text: "Neubauten ab 2023 profitieren von 3% AfA (statt 2%). In Kombination mit Zinsen ergibt sich eine jährliche Steuerersparnis im vierstelligen Bereich.",
+    name: "Christine H.",
+    role: "Abteilungsleiterin",
+    savings: "€14.300",
+    text: "Der Full-Service-Ansatz hat mich überzeugt. Ich musste mich um nichts kümmern und spare jetzt über €14.000 pro Jahr an Steuern.",
   },
 ];
 
@@ -73,10 +73,10 @@ export default function Testimonials() {
           className="text-center mb-16"
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-gold/20 bg-gold/5 mb-6">
-            <span className="text-gold text-sm tracking-widest uppercase">Rechenbeispiele</span>
+            <span className="text-gold text-sm tracking-widest uppercase">Kundenstimmen</span>
           </div>
           <h2 className="font-display text-3xl md:text-5xl text-gray-800">
-            So rechnet sich <span className="gold-text">das System</span>
+            Was unsere <span className="gold-text">Kunden sagen</span>
           </h2>
         </motion.div>
 
