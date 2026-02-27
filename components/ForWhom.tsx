@@ -135,9 +135,7 @@ export default function ForWhom() {
             In 30 Minuten zeigen wir dir, wie viel du sparen kannst. 100% kostenlos, unverbindlich.
           </p>
           <a
-            href="https://immo-statt-steuern.de"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/anfrage"
             className="group inline-flex items-center gap-2 px-10 py-5 bg-gold text-white font-bold rounded-full text-lg transition-all duration-300 hover:shadow-[0_0_60px_rgba(59,125,110,0.3)] hover:scale-105"
           >
             Kostenlose Steuer-Analyse starten
