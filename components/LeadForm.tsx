@@ -74,6 +74,7 @@ const investmentBudgets = [
 ];
 
 const sourceOptions = [
+  { value: "instagram", label: "Instagram" },
   { value: "reddit", label: "Reddit" },
   { value: "linkedin", label: "LinkedIn" },
   { value: "google", label: "Google Suche" },

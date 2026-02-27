@@ -261,6 +261,7 @@ export default function LeadForm() {
                 <label className="block text-sm text-foreground/70 mb-1.5">Wie bist du auf uns aufmerksam geworden?</label>
                 <div className="space-y-2">
                   {[
+                    { value: "instagram", label: "Instagram" },
                     { value: "reddit", label: "Reddit" },
                     { value: "linkedin", label: "LinkedIn" },
                     { value: "google", label: "Google Suche" },
