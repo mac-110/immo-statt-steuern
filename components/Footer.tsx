@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 export default function Footer() {
   return (
     <footer className="relative py-12 border-t border-gray-200">
@@ -11,16 +13,19 @@ export default function Footer() {
             <span className="text-gray-600">STEUERN</span>
           </div>
           <div className="flex items-center gap-8 text-sm text-gray-400">
-            <a href="https://immo-statt-steuern.de" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">
+            <Link href="/impressum" className="hover:text-gold transition-colors">
               Impressum
-            </a>
-            <a href="https://immo-statt-steuern.de" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">
+            </Link>
+            <Link href="/datenschutz" className="hover:text-gold transition-colors">
               Datenschutz
-            </a>
+            </Link>
           </div>
           <div className="text-sm text-gray-300">
             © {new Date().getFullYear()} Alle Rechte vorbehalten
           </div>
+        </div>
+        <div className="mt-6 text-center text-xs text-gray-300">
+          Alle Berechnungen und Beispiele dienen der Veranschaulichung und stellen keine Steuerberatung dar.
         </div>
       </div>
     </footer>

@@ -10,7 +10,7 @@ const forYou = [
   "Unternehmer & Selbstständige",
   "Ärzte, Ingenieure & Berater",
   "Hohe Steuerlast (42%+)",
-  "Auch ohne Eigenkapital",
+  "Auch mit wenig Eigenkapital",
 ];
 
 const notForYou = [

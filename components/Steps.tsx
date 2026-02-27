@@ -21,8 +21,8 @@ const steps = [
   {
     icon: FileCheck,
     title: "Finanzierung & Setup",
-    description: "110% Bankfinanzierung — du brauchst 0€ Eigenkapital. Wir kümmern uns um alles.",
-    detail: "0€ Eigenkapital",
+    description: "Bis zu 100% Kaufpreisfinanzierung möglich. Nebenkosten (ca. 10-15%) aus Eigenmitteln. Wir begleiten den gesamten Prozess.",
+    detail: "Wenig Eigenkapital",
   },
   {
     icon: PartyPopper,

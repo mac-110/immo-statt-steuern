@@ -5,10 +5,10 @@ import { motion } from "framer-motion";
 import { ArrowRight, Shield, Users, Star, Clock, Wallet } from "lucide-react";
 
 const stats = [
-  { icon: Users, value: "150+", label: "Kunden" },
+  { icon: Users, value: "150+", label: "Beratungen" },
   { icon: Star, value: "4.9/5", label: "Bewertung" },
-  { icon: Shield, value: "100%", label: "Legal & Bankgeprüft" },
-  { icon: Wallet, value: "0€", label: "Eigenkapital nötig" },
+  { icon: Shield, value: "100%", label: "Legal & geprüft" },
+  { icon: Wallet, value: "Gering", label: "Eigenkapital" },
   { icon: Clock, value: "24h", label: "Erste Analyse" },
 ];
 

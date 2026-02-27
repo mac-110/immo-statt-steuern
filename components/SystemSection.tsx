@@ -9,16 +9,16 @@ const principles = [
   {
     icon: FileText,
     title: "AfA / Abschreibungen",
-    highlight: "bis zu €40k+/Jahr",
+    highlight: "Steuerlich absetzbar",
     description:
-      "Immobilien-Abschreibungen reduzieren dein zu versteuerndes Einkommen massiv. Gebäude, Sanierung, Möbel — alles absetzbar.",
+      "Gebäude-Abschreibungen (3% AfA p.a.) reduzieren dein zu versteuerndes Einkommen. Dazu kommen Zinsen, Sanierungskosten und Möbel.",
   },
   {
     icon: Landmark,
-    title: "110% Bankfinanzierung",
-    highlight: "0€ Eigenkapital",
+    title: "Bis 100% Bankfinanzierung",
+    highlight: "Wenig Eigenkapital",
     description:
-      "Die Bank finanziert alles — Kaufpreis plus Nebenkosten. Du startest ohne einen Cent eigenes Kapital.",
+      "Viele Banken finanzieren bis zu 100% des Kaufpreises — Nebenkosten (ca. 10-15%) sind in der Regel aus Eigenmitteln zu tragen.",
   },
   {
     icon: Home,

@@ -18,7 +18,7 @@ const jakarta = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   title: "Immo statt Steuern — Vermögen aufbauen statt Steuern zahlen",
   description:
-    "Spare bis zu €40.000+ pro Jahr an Steuern durch intelligente Immobilieninvestments. 100% legal, bankgeprüft, 0€ Eigenkapital nötig.",
+    "Reduziere deine Steuerlast durch intelligente Immobilieninvestments. 100% legal, bankgeprüft — mit realistischen Rechenbeispielen.",
   openGraph: {
     title: "Immo statt Steuern",
     description: "Zahlst du noch Steuern? Oder baust du bereits Vermögen auf?",

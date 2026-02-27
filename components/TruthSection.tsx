@@ -73,8 +73,8 @@ export default function TruthSection() {
         {/* Big stats */}
         <div className="grid md:grid-cols-3 gap-8 mb-20">
           {[
-            { value: 3750, prefix: "€", suffix: "/Monat", label: "gehen ans Finanzamt", sub: "bei 100k Jahresgehalt" },
-            { value: 450000, prefix: "€", suffix: "", label: "in 10 Jahren verloren", sub: "unwiederbringlich" },
+            { value: 2800, prefix: "€", suffix: "/Monat", label: "gehen ans Finanzamt", sub: "bei 100k Jahresgehalt (Stkl. 1)" },
+            { value: 336000, prefix: "€", suffix: "", label: "in 10 Jahren verloren", sub: "unwiederbringlich" },
             { value: 0, prefix: "", suffix: "%", label: "Vermögensaufbau-Rate", sub: "kein Vermögen entsteht" },
           ].map((stat, i) => (
             <motion.div

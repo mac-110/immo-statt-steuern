@@ -61,13 +61,15 @@ export default function CalculatorSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  // Simplified calculation
+  // Realistic calculation based on German tax law
   const annualGross = income * 12 / 0.58;
-  const taxRate = annualGross > 120000 ? 0.45 : annualGross > 60000 ? 0.42 : 0.35;
+  const taxRate = annualGross > 277826 ? 0.45 : annualGross > 62810 ? 0.42 : 0.35;
   const kaufpreis = 250000;
-  const zinssatz = 0.045;
+  const gebaeudeanteil = 0.75; // 75% Gebäude, 25% Grundstück (realistisch)
+  const zinssatz = 0.04; // 4% Zinssatz (aktuelles Niveau)
   const jahreszinsen = kaufpreis * zinssatz;
-  const afa = kaufpreis * 0.04;
+  const afaSatz = 0.03; // 3% AfA für Neubauten ab 2023 (§7 Abs.4 EStG)
+  const afa = kaufpreis * gebaeudeanteil * afaSatz; // AfA nur auf Gebäudeanteil
   const totalReduction = jahreszinsen + afa;
   const savings = Math.round(totalReduction * taxRate);
 
@@ -142,16 +144,16 @@ export default function CalculatorSection() {
                 <div className="text-gray-700 font-semibold">€250.000</div>
               </div>
               <div className="glass-card p-4">
-                <div className="text-gray-400">Eigenkapital</div>
-                <div className="text-gold font-semibold">€0</div>
+                <div className="text-gray-400">Gebäudeanteil</div>
+                <div className="text-gray-700 font-semibold">75%</div>
               </div>
               <div className="glass-card p-4">
                 <div className="text-gray-400">Zinsen</div>
-                <div className="text-gray-700 font-semibold">4,5%</div>
+                <div className="text-gray-700 font-semibold">4,0%</div>
               </div>
               <div className="glass-card p-4">
-                <div className="text-gray-400">Monatsmiete</div>
-                <div className="text-gray-700 font-semibold">€1.125</div>
+                <div className="text-gray-400">AfA-Satz</div>
+                <div className="text-gray-700 font-semibold">3,0%</div>
               </div>
             </div>
           </motion.div>
