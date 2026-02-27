@@ -184,7 +184,7 @@ export default function LeadForm() {
             Vielen Dank!
           </h1>
           <p className="text-foreground/70 leading-relaxed">
-            Deine Anfrage ist bei uns eingegangen. Wir melden uns innerhalb von 24 Stunden bei dir — per E-Mail oder Telefon.
+            Deine Anfrage ist bei uns eingegangen. Wir melden uns bei dir — per E-Mail oder Telefon.
           </p>
         </div>
       </div>

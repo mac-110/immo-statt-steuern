@@ -610,8 +610,7 @@ export default function LeadForm() {
                   transition={{ delay: 0.5 }}
                   className="text-gray-600 text-lg mb-8"
                 >
-                  Wir melden uns innerhalb von <span className="text-gold font-bold">24 Stunden</span> bei
-                  dir mit deiner persönlichen Steuerersparnis-Analyse.
+                  Wir melden uns bei dir mit deiner persönlichen Steuerersparnis-Analyse.
                 </motion.p>
 
                 <motion.div
