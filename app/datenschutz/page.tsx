@@ -97,9 +97,9 @@ export default function DatenschutzPage() {
 
           <h2>5. Datenbank (Convex)</h2>
           <p>
-            Für die Speicherung von Anfragen nutzen wir <strong>Convex</strong> (Convex Inc., USA).
-            Es werden nur die im Kontaktformular angegebenen Daten gespeichert. Convex
-            verarbeitet Daten auf Servern in den USA. Weitere Informationen:{" "}
+            Für die Speicherung von Anfragen nutzen wir <strong>Convex</strong> (Convex Inc.).
+            Es werden nur die im Kontaktformular angegebenen Daten gespeichert. Die Daten
+            werden auf Servern in <strong>Irland (EU)</strong> verarbeitet und gespeichert. Weitere Informationen:{" "}
             <a href="https://www.convex.dev/legal/privacy" target="_blank" rel="noopener noreferrer">
               Convex Datenschutzerklärung
             </a>.
@@ -145,9 +145,13 @@ export default function DatenschutzPage() {
 
           <h2>10. Drittanbieter und Datenübermittlung in Drittländer</h2>
           <p>
-            Einige der von uns genutzten Dienste (Vercel, Convex) haben ihren Sitz in den USA.
-            Die Datenübermittlung in die USA erfolgt auf Grundlage des EU-US Data Privacy
-            Framework bzw. Standardvertragsklauseln der EU-Kommission.
+            <strong>Vercel</strong> (Hosting) hat seinen Sitz in den USA. Die Datenübermittlung
+            erfolgt auf Grundlage des EU-US Data Privacy Framework bzw. Standardvertragsklauseln
+            der EU-Kommission.
+          </p>
+          <p>
+            <strong>Convex</strong> (Datenbank) speichert und verarbeitet alle Daten in
+            Irland (EU). Eine Übermittlung in Drittländer findet nicht statt.
           </p>
 
           <h2>11. Änderungen</h2>
