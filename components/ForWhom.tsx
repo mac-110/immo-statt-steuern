@@ -24,7 +24,7 @@ export default function ForWhom() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="analyse" ref={ref} className="relative py-32 overflow-hidden">
+    <section id="zielgruppe" ref={ref} className="relative py-32 overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
       <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-gold/3 rounded-full blur-3xl" />
 
